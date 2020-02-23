@@ -123,6 +123,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\TheatreManagerController.cs" />
     <Compile Include="Controllers\ViewerController.cs" />
     <Compile Include="Filter\CacheFilter.cs" />
     <Compile Include="Filter\CheckModelForNullAttribute.cs" />

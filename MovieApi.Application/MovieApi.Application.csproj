@@ -54,8 +54,10 @@
     <Compile Include="Dtos\RecommendationDto.cs" />
     <Compile Include="Dtos\RecommendationMovieDto.cs" />
     <Compile Include="Dtos\RecommendationTvShowDto.cs" />
+    <Compile Include="Interfaces\ITheatreManagerAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IViewerAppService.cs" />
+    <Compile Include="Services\TheatreManagerAppService.cs" />
     <Compile Include="Services\ViewerAppService.cs" />
   </ItemGroup>
   <ItemGroup>
