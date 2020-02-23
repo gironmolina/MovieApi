@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ManagerTheatreException.cs" />
     <Compile Include="Exceptions\ViewerException.cs" />
     <Compile Include="HttpClientHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

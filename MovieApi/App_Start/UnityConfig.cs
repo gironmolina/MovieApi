@@ -41,9 +41,11 @@ namespace MovieApi
         {
 	        // Application Services
 	        container.RegisterType<IViewerAppService, ViewerAppService>();
+	        container.RegisterType<ITheatreManagerAppService, TheatreManagerAppService>();
 
 	        // Domain Services
 	        container.RegisterType<IViewerService, ViewerService>();
+	        container.RegisterType<ITheatreManagerService, TheatreManagerService>();
 
 	        // Repositories
 	        //container.RegisterType<ITransactionsRepository, TransactionsRepository>();

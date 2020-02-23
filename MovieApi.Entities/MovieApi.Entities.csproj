@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillboardEntity.cs" />
+    <Compile Include="MovieScreenEntity.cs" />
     <Compile Include="RecommendationDocumentaryEntity.cs" />
     <Compile Include="RecommendationEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ITheatreManagerService.cs" />
     <Compile Include="Interfaces\IViewerService.cs" />
+    <Compile Include="Services\TheatreManagerService.cs" />
     <Compile Include="Services\ViewerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -32,7 +32,7 @@ namespace MovieApi.Controllers
 		/// <response code="400">API Bad request.</response>
 		/// <response code="500">Server found an unexpected error.</response>
 		[HttpGet]
-		[Route("api/v1/UpcomingMovies")]
+		[Route("api/v1/Viewer/UpcomingMovies")]
 		[ResponseType(typeof(IEnumerable<RecommendationMovieDto>))]
 		public async Task<IHttpActionResult> GetUpcomingMovies([FromUri] List<string> keywords, [FromUri] List<string> genres, [FromUri] int weeksFromNow)
 		{
@@ -59,7 +59,7 @@ namespace MovieApi.Controllers
 		/// <response code="400">API Bad request.</response>
 		/// <response code="500">Server found an unexpected error.</response>
 		[HttpGet]
-		[Route("api/v1/AllTimeMovies")]
+		[Route("api/v1/Viewer/AllTimeMovies")]
 		[ResponseType(typeof(IEnumerable<RecommendationMovieDto>))]
 		public async Task<IHttpActionResult> GetAllTimeMovies([FromUri] List<string> keywords, [FromUri] List<string> genres)
 		{
@@ -86,7 +86,7 @@ namespace MovieApi.Controllers
 		/// <response code="400">API Bad request.</response>
 		/// <response code="500">Server found an unexpected error.</response>
 		[HttpGet]
-		[Route("api/v1/AllTimeTVShows")]
+		[Route("api/v1/Viewer/AllTimeTVShows")]
 		[ResponseType(typeof(IEnumerable<RecommendationTvShowDto>))]
 		public async Task<IHttpActionResult> GetAllTimeTvShows([FromUri] List<string> keywords, [FromUri] List<string> genres)
 		{
@@ -113,7 +113,7 @@ namespace MovieApi.Controllers
 		/// <response code="400">API Bad request.</response>
 		/// <response code="500">Server found an unexpected error.</response>
 		[HttpGet]
-		[Route("api/v1/AllTimeDocumentaries")]
+		[Route("api/v1/Viewer/AllTimeDocumentaries")]
 		[ResponseType(typeof(IEnumerable<RecommendationDocumentaryDto>))]
 		public async Task<IHttpActionResult> GetAllTimeDocumentaries([FromUri] List<string> topics)
 		{

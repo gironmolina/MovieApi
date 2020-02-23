@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\BillboardDto.cs" />
+    <Compile Include="Dtos\MovieScreenDto.cs" />
     <Compile Include="Dtos\RecommendationDocumentaryDto.cs" />
     <Compile Include="Dtos\RecommendationDto.cs" />
     <Compile Include="Dtos\RecommendationMovieDto.cs" />

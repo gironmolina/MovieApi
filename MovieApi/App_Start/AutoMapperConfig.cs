@@ -14,6 +14,8 @@ namespace MovieApi
 				cfg.CreateMap<RecommendationMovieEntity, RecommendationMovieDto>();
 				cfg.CreateMap<RecommendationTvShowEntity, RecommendationTvShowDto>();
 				cfg.CreateMap<RecommendationDocumentaryEntity, RecommendationDocumentaryDto>();
+				cfg.CreateMap<BillboardEntity, BillboardDto>();
+				cfg.CreateMap<MovieScreenEntity, MovieScreenDto>();
 			});
 		}
 	}
