@@ -6,5 +6,6 @@
 		string GenreListUrl { get; }
 		string ApiKey { get; }
 		string SortBy { get; }
+		string BeezyCinemaDb { get; }
 	}
 }

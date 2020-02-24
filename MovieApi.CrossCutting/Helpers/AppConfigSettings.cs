@@ -13,12 +13,15 @@ namespace MovieApi.CrossCutting.Helpers
 
 		public string SortBy { get; }
 
+		public string BeezyCinemaDb { get; }
+
 		public AppConfigSettings()
 		{
 			this.DiscoverMovieUrl = ConfigurationManager.AppSettings["DiscoverMovieUrl"];
 			this.GenreListUrl = ConfigurationManager.AppSettings["GenreListUrl"];
 			this.ApiKey = ConfigurationManager.AppSettings["ApiKey"];
 			this.SortBy = ConfigurationManager.AppSettings["SortBy"];
+			this.BeezyCinemaDb = ConfigurationManager.AppSettings["BeezyCinemaDb"];
 		}
 	}
 }

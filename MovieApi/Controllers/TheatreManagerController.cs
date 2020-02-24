@@ -89,11 +89,7 @@ namespace MovieApi.Controllers
 		[HttpGet]
 		[Route("api/v1/TheatreManagers/IntelligentBillboard")]
 		[ResponseType(typeof(IEnumerable<IntelligentBillboardDto>))]
-		public async Task<IHttpActionResult> GetIntelligentBillboard(
-			[FromUri] int weeksFromNow,
-			[FromUri] int numberOfBigScreens,
-			[FromUri] int numberOfSmallScreens,
-			[FromUri] bool isBasedOnCityMovies)
+		public async Task<IHttpActionResult> GetIntelligentBillboard([FromUri] int weeksFromNow, [FromUri] int numberOfBigScreens, [FromUri] int numberOfSmallScreens, [FromUri] bool isBasedOnCityMovies)
 		{
 			try
 			{
@@ -101,8 +97,7 @@ namespace MovieApi.Controllers
 					weeksFromNow, 
 					numberOfBigScreens, 
 					numberOfSmallScreens,
-					isBasedOnCityMovies)
-				.ConfigureAwait(false);
+					isBasedOnCityMovies).ConfigureAwait(false);
 				return this.Ok(intelligentBillboard);
 			}
 			catch (Exception ex)

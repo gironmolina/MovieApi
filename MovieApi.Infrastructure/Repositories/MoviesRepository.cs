@@ -5,25 +5,49 @@ using System.Linq;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
+using Microsoft.EntityFrameworkCore;
 using MovieApi.CrossCutting.Interfaces;
 using MovieApi.Entities;
 using MovieApi.Entities.Enums;
+using MovieApi.Infrastructure.DbContext;
 using MovieApi.Infrastructure.Interfaces;
 
 namespace MovieApi.Infrastructure.Repositories
 {
 	public class MoviesRepository : IMoviesRepository
 	{
+		private readonly BeezyCinemaContext _context;
 		private readonly IAppConfigSettings _appConfigSettings;
 
-		public MoviesRepository(IAppConfigSettings appConfigSettings)
+		public MoviesRepository(BeezyCinemaContext context, IAppConfigSettings appConfigSettings)
 		{
+			_context = context;
 			_appConfigSettings = appConfigSettings;
 		}
 
 		public async Task<List<MovieInfoEntity>> GetMoviesInfoFromDb()
 		{
-			return new List<MovieInfoEntity>();
+			var movies = await _context.Movie.Include(m => m.Session).ThenInclude(s => s.Room).ToListAsync();
+			var moviesInfo = movies.SelectMany(m => m.Session.Select(s => new { movie = m, seats = s.SeatsSold, size = s.Room?.Size }));
+			var moviesGenres = await _context.MovieGenre.ToListAsync();
+			var genres = await _context.Genre.ToListAsync();
+
+			var groupMovies = moviesInfo.GroupBy(m =>
+					new {m.movie, m.size}, m => m.seats, (key, g) => 
+					new {movieSize = key, summary = g.Sum()})
+				.Select(n => new MovieInfoEntity
+				(
+					title: n.movieSize.movie.OriginalTitle,
+					overview: string.Empty,
+					genre: GetGenre(n.movieSize.movie.Id, moviesGenres, genres),
+					language: n.movieSize.movie.OriginalLanguage,
+					releaseDate: n.movieSize.movie.ReleaseDate,
+					webSite: string.Empty,
+					keywords: new List<string>(),
+					roomSize: GetRoomSizeType(n.movieSize.size),
+					totalSeatsSold: n.summary ?? 0));
+
+			return groupMovies.ToList();
 		}
 
 		public async Task<List<MovieInfoEntity>> GetMoviesInfoFromApi()
@@ -95,16 +119,15 @@ namespace MovieApi.Infrastructure.Repositories
 			string title = movie.title;
 			string overview = movie.overview;
 			string movieGenre = movie.genre_ids.Count > 0 ? genres[movie.genre_ids[0]] : null;
-			string original_language = movie.original_language;
-			DateTime release_date = DateTime.ParseExact(movie.release_date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			string originalLanguage = movie.original_language;
+			DateTime releaseDate = DateTime.ParseExact(movie.release_date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-			return new MovieInfoEntity(title, overview, movieGenre, original_language, release_date, string.Empty, new List<string>(), roomSize, 0);
+			return new MovieInfoEntity(title, overview, movieGenre, originalLanguage, releaseDate, string.Empty, new List<string>(), roomSize, 0);
 		}
 
 		private Dictionary<long, string> SetGenres(dynamic genres)
 		{
-			Dictionary<long, string> genresDictionary = new Dictionary<long, string>();
-
+			var genresDictionary = new Dictionary<long, string>();
 			foreach (var genre in genres.genres)
 			{
 				genresDictionary.Add(genre.id, genre.name);

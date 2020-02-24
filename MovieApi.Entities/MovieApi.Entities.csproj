@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillboardEntity.cs" />
+    <Compile Include="CinemaEntity.cs" />
+    <Compile Include="CityEntity.cs" />
     <Compile Include="Enums\RoomSizeType.cs" />
     <Compile Include="GenreEntity.cs" />
     <Compile Include="IntelligentBillboardEntity.cs" />
+    <Compile Include="MovieEntity.cs" />
     <Compile Include="MovieFileEntity.cs" />
     <Compile Include="MovieGenreEntity.cs" />
     <Compile Include="MovieInfoEntity.cs" />
@@ -54,7 +57,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecommendationMovieEntity.cs" />
     <Compile Include="RecommendationTvShowEntity.cs" />
+    <Compile Include="RoomEntity.cs" />
     <Compile Include="ScreenBoardEntity.cs" />
+    <Compile Include="SessionEntity.cs" />
     <Compile Include="WeekBoardEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
