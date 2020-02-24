@@ -7,6 +7,7 @@ namespace MovieApi.Application.Interfaces
 	public interface ITheatreManagerAppService
 	{
 		Task<IEnumerable<RecommendationMovieDto>> GetUpcomingMovies(int weeksFromNow, string ageRate, string genre);
-		Task<IEnumerable<BillboardDto>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool basedOnCityMovies);
+		Task<IEnumerable<BillboardDto>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool isBasedOnCityMovies);
+		Task<IEnumerable<IntelligentBillboardDto>> GetIntelligentBillboard(int weeksFromNow, int numberOfBigScreens, int numberOfSmallScreens, bool isBasedOnCityMovies);
 	}
 }

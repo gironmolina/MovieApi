@@ -61,11 +61,11 @@ namespace MovieApi.Controllers
 		[HttpGet]
 		[Route("api/v1/TheatreManager/SuggestedBillboard")]
 		[ResponseType(typeof(IEnumerable<BillboardDto>))]
-		public async Task<IHttpActionResult> GetSuggestedBillboard([FromUri] int weeksFromNow, [FromUri] int numberOfScreens, [FromUri] bool basedOnCityMovies)
+		public async Task<IHttpActionResult> GetSuggestedBillboard([FromUri] int weeksFromNow, [FromUri] int numberOfScreens, [FromUri] bool isBasedOnCityMovies)
 		{
 			try
 			{
-				var suggestedBillboard = await _theatreManagerAppService.GetSuggestedBillboard(weeksFromNow, numberOfScreens, basedOnCityMovies)
+				var suggestedBillboard = await _theatreManagerAppService.GetSuggestedBillboard(weeksFromNow, numberOfScreens, isBasedOnCityMovies)
 					.ConfigureAwait(false);
 				return this.Ok(suggestedBillboard);
 			}
@@ -81,33 +81,40 @@ namespace MovieApi.Controllers
 			}
 		}
 
-		///// <summary>Get Upcoming Movies.</summary>
-		///// >
-		///// <response code="200">Returns Upcoming Movies.</response>
-		///// <response code="400">API Bad request.</response>
-		///// <response code="500">Server found an unexpected error.</response>
-		//[HttpGet]
-		//[Route("api/v1/TheatreManagers/UpcomingMovies")]
-		//[ResponseType(typeof(IEnumerable<RecommendationMovieDto>))]
-		//public async Task<IHttpActionResult> GetIntelligentBillboard(
-		//	[FromUri] int weeksFromNow, 
-		//	[FromUri] int numberOfBigScreens, 
-		//	[FromUri] int numberOfSmallScreens,
-		//	[FromUri] bool basedOnCityMovies)
-		//{
-		//	try
-		//	{
-		//		var upcomingMovies = await _theatreManagerAppService.GetUpcomingMovies(weeksFromNow, ageRate, genre)
-		//			.ConfigureAwait(false);
-		//		return this.Ok(upcomingMovies);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		Logger.Error(ex.Message, ex);
-		//		if (ex is ViewerException) return BadRequest();
+		/// <summary>Get Intelligent Billboard.</summary>
+		/// >
+		/// <response code="200">Returns Intelligent Billboard.</response>
+		/// <response code="400">API Bad request.</response>
+		/// <response code="500">Server found an unexpected error.</response>
+		[HttpGet]
+		[Route("api/v1/TheatreManagers/IntelligentBillboard")]
+		[ResponseType(typeof(IEnumerable<IntelligentBillboardDto>))]
+		public async Task<IHttpActionResult> GetIntelligentBillboard(
+			[FromUri] int weeksFromNow,
+			[FromUri] int numberOfBigScreens,
+			[FromUri] int numberOfSmallScreens,
+			[FromUri] bool isBasedOnCityMovies)
+		{
+			try
+			{
+				var intelligentBillboard = await _theatreManagerAppService.GetIntelligentBillboard(
+						weeksFromNow, 
+						numberOfBigScreens, 
+						numberOfSmallScreens,
+						isBasedOnCityMovies)
+					.ConfigureAwait(false);
+				return this.Ok(intelligentBillboard);
+			}
+			catch (Exception ex)
+			{
+				Logger.Error(ex.Message, ex);
+				if (ex is ManagerTheatreException || ex is ArgumentException)
+				{
+					return BadRequest();
+				}
 
-		//		return InternalServerError(ex);
-		//	}
-		//}
+				return InternalServerError(ex);
+			}
+		}
 	}
 }

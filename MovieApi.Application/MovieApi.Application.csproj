@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\BillboardDto.cs" />
+    <Compile Include="Dtos\IntelligentBillboardDto.cs" />
     <Compile Include="Dtos\MovieScreenDto.cs" />
     <Compile Include="Dtos\RecommendationDocumentaryDto.cs" />
     <Compile Include="Dtos\RecommendationDto.cs" />

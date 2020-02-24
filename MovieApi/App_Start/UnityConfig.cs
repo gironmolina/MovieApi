@@ -1,8 +1,12 @@
 using System;
 using MovieApi.Application.Interfaces;
 using MovieApi.Application.Services;
+using MovieApi.CrossCutting.Helpers;
+using MovieApi.CrossCutting.Interfaces;
 using MovieApi.Domain.Interfaces;
 using MovieApi.Domain.Services;
+using MovieApi.Infrastructure.Interfaces;
+using MovieApi.Infrastructure.Repositories;
 using Unity;
 
 namespace MovieApi
@@ -46,13 +50,14 @@ namespace MovieApi
 	        // Domain Services
 	        container.RegisterType<IViewerService, ViewerService>();
 	        container.RegisterType<ITheatreManagerService, TheatreManagerService>();
+	        container.RegisterType<IWeekBoardService, WeekBoardService>();
+	        container.RegisterType<IWeekDatesService, WeekDatesService>();
 
 	        // Repositories
-	        //container.RegisterType<ITransactionsRepository, TransactionsRepository>();
-	        //container.RegisterType<IRatesRepository, RatesRepository>();
+	        container.RegisterType<IMoviesRepository, MoviesRepository>();
 
 	        // Cross-cutting
-	        //container.RegisterType<IAppConfigSettings, AppConfigSettings>();
+	        container.RegisterType<IAppConfigSettings, AppConfigSettings>();
         }
     }
 }

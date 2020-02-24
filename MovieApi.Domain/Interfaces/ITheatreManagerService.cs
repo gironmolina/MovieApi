@@ -8,6 +8,8 @@ namespace MovieApi.Domain.Interfaces
 	{
 		Task<IEnumerable<RecommendationMovieEntity>> GetUpcomingMovies(int weeksFromNow, string ageRate, string genre);
 
-		Task<IEnumerable<BillboardEntity>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool basedOnCityMovies);
+		Task<IEnumerable<BillboardEntity>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool isBasedOnCityMovies);
+
+		Task<IEnumerable<IntelligentBillboardEntity>> GetIntelligentBillboard(int weeksFromNow, int numberOfBigScreens, int numberOfSmallScreens, bool isBasedOnCityMovies);
 	}
 }

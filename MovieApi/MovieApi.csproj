@@ -162,6 +162,10 @@
       <Project>{375DDF49-608D-4209-B5CE-9E92193833F5}</Project>
       <Name>MovieApi.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MovieApi.Infrastructure\MovieApi.Infrastructure.csproj">
+      <Project>{DC686F23-C18E-48F4-8736-9FB88E8B0B58}</Project>
+      <Name>MovieApi.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

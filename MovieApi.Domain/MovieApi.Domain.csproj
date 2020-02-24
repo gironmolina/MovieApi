@@ -31,11 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,18 +52,31 @@
   <ItemGroup>
     <Compile Include="Interfaces\ITheatreManagerService.cs" />
     <Compile Include="Interfaces\IViewerService.cs" />
+    <Compile Include="Interfaces\IWeekBoardService.cs" />
+    <Compile Include="Interfaces\IWeekDatesService.cs" />
     <Compile Include="Services\TheatreManagerService.cs" />
     <Compile Include="Services\ViewerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WeekBoardService.cs" />
+    <Compile Include="Services\WeekDatesService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieApi.CrossCutting\MovieApi.CrossCutting.csproj">
+      <Project>{8F034C75-79E6-4C2F-A124-60BF5F2C7D15}</Project>
+      <Name>MovieApi.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieApi.Entities\MovieApi.Entities.csproj">
       <Project>{375DDF49-608D-4209-B5CE-9E92193833F5}</Project>
       <Name>MovieApi.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieApi.Infrastructure\MovieApi.Infrastructure.csproj">
+      <Project>{DC686F23-C18E-48F4-8736-9FB88E8B0B58}</Project>
+      <Name>MovieApi.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

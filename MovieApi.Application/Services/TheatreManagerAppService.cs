@@ -25,11 +25,18 @@ namespace MovieApi.Application.Services
 			return Mapper.Map<IEnumerable<RecommendationMovieDto>>(upcomingMovies);
 		}
 
-		public async Task<IEnumerable<BillboardDto>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool basedOnCityMovies)
+		public async Task<IEnumerable<BillboardDto>> GetSuggestedBillboard(int weeksFromNow, int numberOfScreens, bool isBasedOnCityMovies)
 		{
 			Logger.Debug("Getting Suggested Billboard");
-			var upcomingMovies = await this._theatreManagerService.GetSuggestedBillboard(weeksFromNow, numberOfScreens, basedOnCityMovies).ConfigureAwait(false);
+			var upcomingMovies = await this._theatreManagerService.GetSuggestedBillboard(weeksFromNow, numberOfScreens, isBasedOnCityMovies).ConfigureAwait(false);
 			return Mapper.Map<IEnumerable<BillboardDto>>(upcomingMovies);
+		}
+
+		public async Task<IEnumerable<IntelligentBillboardDto>> GetIntelligentBillboard(int weeksFromNow, int numberOfBigScreens, int numberOfSmallScreens, bool isBasedOnCityMovies)
+		{
+			Logger.Debug("Getting Suggested Billboard");
+			var intelligentBillboard = await this._theatreManagerService.GetIntelligentBillboard(weeksFromNow, numberOfBigScreens, numberOfSmallScreens, isBasedOnCityMovies).ConfigureAwait(false);
+			return Mapper.Map<IEnumerable<IntelligentBillboardDto>>(intelligentBillboard);
 		}
 	}
 }
