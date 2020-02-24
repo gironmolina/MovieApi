@@ -18,7 +18,7 @@ namespace MovieApi.Domain.Services
 					Overview = "...",
 					Genre = "Terror",
 					Language = "English",
-					ReleaseDate = DateTime.Now,
+					ReleaseDate = new DateTime(1987, 9, 22),
 					WebSite = "www.bestmovie.com",
 					Keywords = new List<string>{"movie", "best"}
 				}
@@ -36,7 +36,7 @@ namespace MovieApi.Domain.Services
 					Overview = "...",
 					Genre = "Terror",
 					Language = "English",
-					ReleaseDate = DateTime.Now,
+					ReleaseDate = new DateTime(1987, 9, 22),
 					WebSite = "www.bestmovie.com",
 					Keywords = new List<string>{"movie", "best"}
 				}
@@ -54,7 +54,7 @@ namespace MovieApi.Domain.Services
 					Overview = "...",
 					Genre = "Terror",
 					Language = "English",
-					ReleaseDate = DateTime.Now,
+					ReleaseDate = new DateTime(1987, 9, 22),
 					WebSite = "www.bestmovie.com",
 					Keywords = new List<string>{"movie", "best"},
 					NumberOfSeasons = 1,
@@ -75,7 +75,7 @@ namespace MovieApi.Domain.Services
 					Overview = "...",
 					Genre = "Terror",
 					Language = "English",
-					ReleaseDate = DateTime.Now,
+					ReleaseDate = new DateTime(1987, 9, 22),
 					WebSite = "www.bestmovie.com",
 					Keywords = new List<string>{"movie", "best"}
 				}

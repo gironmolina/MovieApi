@@ -38,7 +38,7 @@ namespace MovieApi.Domain.Services
 					Overview = "...",
 					Genre = "Terror",
 					Language = "English",
-					ReleaseDate = DateTime.Now,
+					ReleaseDate = new DateTime(1987, 9, 22),
 					WebSite = "www.bestmovie.com",
 					Keywords = new List<string>{"movie", "best"}
 				}
@@ -62,14 +62,14 @@ namespace MovieApi.Domain.Services
 								Overview = "...",
 								Genre = "Terror",
 								Language = "English",
-								ReleaseDate = DateTime.Now,
+								ReleaseDate = new DateTime(1987, 9, 22),
 								WebSite = "www.bestmovie.com",
 								Keywords = new List<string>{"movie", "best"}
 							},
 							Screen = 1
 						}
 					},
-					WeekStart = DateTime.Now
+					WeekStart = new DateTime(1987, 9, 22)
 				}
 			};
 			return await Task.FromResult<IEnumerable<BillboardEntity>>(billboard);
