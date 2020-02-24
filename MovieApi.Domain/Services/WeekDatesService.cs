@@ -10,7 +10,7 @@ namespace MovieApi.Domain.Services
 
 		public IEnumerable<DateTime> GetWeekDates(int weeksFromNow)
 		{
-			for (int weekIndex = 0; weekIndex < weeksFromNow; weekIndex++)
+			for (var weekIndex = 0; weekIndex < weeksFromNow; weekIndex++)
 			{
 				yield return StartOfWeek(DateTime.UtcNow.AddDays(7 * (weekIndex + 1)), WEEK_START);
 			}
