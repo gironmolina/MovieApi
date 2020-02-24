@@ -98,11 +98,11 @@ namespace MovieApi.Controllers
 			try
 			{
 				var intelligentBillboard = await _theatreManagerAppService.GetIntelligentBillboard(
-						weeksFromNow, 
-						numberOfBigScreens, 
-						numberOfSmallScreens,
-						isBasedOnCityMovies)
-					.ConfigureAwait(false);
+					weeksFromNow, 
+					numberOfBigScreens, 
+					numberOfSmallScreens,
+					isBasedOnCityMovies)
+				.ConfigureAwait(false);
 				return this.Ok(intelligentBillboard);
 			}
 			catch (Exception ex)
